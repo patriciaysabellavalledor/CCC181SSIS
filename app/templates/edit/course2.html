@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %} Create Course{% endblock %}
+{% block content %}
+<h1> Simple Student Information System </h1>
+<section class="create-type">
+	<div class="container">
+		<h2>EDIT COURSE HERE</h2>
+		{% with messages = get_flashed_messages() %}
+			{% if messages %}
+				{% for msg in messages %}
+					<p class="text-center">{{msg}}</p>
+				{% endfor %}
+			{% endif %}
+		{% endwith %}
+	
+		<form action="" method="POST" class="form-group">
+			<label for="course-code" class="form-label">course code</label>
+			<input type="text" class="form-control" id="code" name="code" placeholder="e.g BSIT" value="{{data[0]}}">
+
+			<label for="course-name" class="form-label">course name</label>
+			<input type="text" class="form-control" id="name" name="name" placeholder="e.g Bachelor of Science in Information Technology" value="{{data[1]}}">
+
+			<label for="college-code" class="form-label">college code</label>
+			<input type="text" class="form-control" id="colleges" name="colleges" placeholder="e.g CCS" value="{{data[2]}}">
+			<input type="submit" name="submit-course" class="btn btn-primary form-control" value="UPDATE">
+			<a href="../../" class="btn btn-info form-control">Back</a>
+		</form>
+	</div>
+</section>
+{% endblock %}

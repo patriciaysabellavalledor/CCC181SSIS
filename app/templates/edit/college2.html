@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %} Create College{% endblock %}
+{% block content %}
+<h1> Simple Student Information System </h1>
+<section class="create-type">
+	<div class="container">
+		<h2>EDIT COLLEGE HERE</h2>
+		{% with messages = get_flashed_messages() %}
+			{% if messages %}
+				{% for msg in messages %}
+					<p class="text-center">{{msg}}</p>
+				{% endfor %}
+			{% endif %}
+		{% endwith %}
+		
+		<form action="" method="POST" class="form-group">
+			<label for="college-code" class="form-label">College code</label>
+			<input type="text" class="form-control" id="code" name="code" placeholder="e.g CCS" value="{{data[0]}}">
+			<label for="college-name" class="form-label">College name</label>
+			<input type="text" class="form-control" id="name" name="name" placeholder="e.g College of Computer Studies" value="{{data[1]}}">
+			<input type="submit" name="submit-college" class="btn btn-primary form-control" value="UPDATE">
+			<a href="{{ url_for('college.colleges' ) }}" class="btn btn-info form-control">Back</a>
+		</form>
+		
+	</div>
+</section>
+{% endblock %}
