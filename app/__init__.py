@@ -1,26 +1,27 @@
 from flask import Flask
 from os import getenv
+import os
 import mysql.connector 
 import cloudinary
 
 db = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    passwd="missymay",
-    database="studentdatabase"
+    host=os.getenv('DB_HOST'),
+    user=os.getenv('DB_USER'),
+    passwd=os.getenv('DB_PASSWORD'),
+    database=os.getenv('DB_NAME')
 )
 
 mycursor = db.cursor(buffered=True)
 
 def create_app():
     app = Flask(__name__)
-    app.secret_key = b'verysecretkey'
+    app.secret_key = os.getenv('SECRET_KEY')
     
     cloudinary.config(
-        cloud_name = 'dkpip1m39' ,
-        api_key = '653781448243179', 
-        api_secret = 'B-hjljedyAU4A5O8EiZESgePWNc',
-        secure = True
+        cloud_name = os.getenv('CLOUD_NAME'),
+        api_key = os.getenv('API_KEY'),
+        api_secret = os.getenv('API_SECRET'),
+        secure = os.getenv('SECURE')
     )
 
     # import blueprints
